@@ -56,7 +56,6 @@ async def create_logs(
         exercises=logs.exercises,
         user_email=current_user.email
     )
-    print("Checking:- ", type(logs))
     DB.insert_record(GYM_COLLECTION, logs)
     return logs
 
@@ -64,14 +63,14 @@ async def create_logs(
 @gym_router.patch("/logs", response_model=ExerciseLogs)
 async def update_logs(
     uid: str,
-    logs: ExerciseLogsRequest,
+    logs_: ExerciseLogsRequest,
     current_user: Annotated[User, Depends(mg.get_current_active_user)]
 ):
     existing_log = DB.get_record(GYM_COLLECTION, "uid", str(uid))
     validate_existing_log(existing_log=existing_log, current_user=current_user)
     logs = ExerciseLogs(
         uid=uid,
-        exercises=logs.exercises,
+        exercises=logs_.exercises,
         user_email=current_user.email,
     )
     DB.update_record(GYM_COLLECTION, logs, "uid")

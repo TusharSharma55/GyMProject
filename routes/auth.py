@@ -18,7 +18,7 @@ def sign_up(user: UserCreate):
         raise HTTPException(status_code=400, detail="Email already registered")
     user.password = mg().get_password_hash(user.password)
     DB.db.userDetails.insert_one(jsonable_encoder(user))
-    return {"message": f"created user {user.email!r}"}
+    return {"message": f"created user {user.email}"}
 
 
 @auth_router.post("/login", response_model=AccessToken, tags=["auth"])

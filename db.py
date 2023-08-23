@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from pymongo import MongoClient, errors
 from fastapi.encoders import jsonable_encoder
 from fastapi import HTTPException, status
+from pymongo.errors import ServerSelectionTimeoutError
 
 from config import MONGO_CLUSTER_URI, MONGO_DATABASE
 
@@ -16,8 +17,11 @@ class MongoDB():
         try:
             self.client = MongoClient(uri)
             self.db = self.client.get_database(name=database)
-        except errors.ConnectionFailure as e:
-            raise HTTPException(status=status.HTTP_400_BAD_REQUEST)
+        # except ServerSelectionTimeoutError:
+        #     raise ServerSelectionTimeoutError
+        except errors.ConnectionFailure:
+            raise HTTPException(status=status.HTTP_400_BAD_REQUEST,
+                                detail="Server is Down for sometime.")
 
     def insert_record(self, collection: str, record: dict | BaseModel) -> None:
         self.db[collection].insert_one(jsonable_encoder(
