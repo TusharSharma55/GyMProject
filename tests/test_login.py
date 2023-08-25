@@ -11,8 +11,8 @@ client = TestClient(app)
 
 def test_sign_new_user() -> None:
     payload = {
-        "email": "testuser6@packt.com",
-        "password": "test6password",
+        "email": "testuser9@packt.com",
+        "password": "test9assword",
     }
     headers = {'Content-Type': 'application/json; charset=UTF-8'}
     test_response = {
@@ -29,8 +29,8 @@ def test_sign_new_user() -> None:
 
 def test_sign_user_in() -> None:
     payload = {
-        "username": "johndoe@mail.com",
-        "password": "secret",
+        "username": "testuser11@packt.com",
+        "password": "test9assword",
         "is_active": True
     }
     headers = {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}

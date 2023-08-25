@@ -6,21 +6,18 @@ from config import (
     GYM_COLLECTION
 )
 
-created_collections = DB.db.list_collection_names()
-
-required_collections = GYM_COLLECTION
 
 fake_collection = f"fake_{uuid.uuid4()}"
 
 
 def test_db_insert_data():
-    DB.insert_record(fake_collection, {"f_name": "XYZ", "l_name": "prs"})
+    DB.insert_record(fake_collection, {"f_name": "Harsh", "l_name": "Prasad"})
 
 
 def test_db_get_data_after_insert():
-    data = DB.get_record(fake_collection, "l_name", "prs")
+    data = DB.get_record(fake_collection, "l_name", "Prasad")
     assert data, "Failed to get data"
-    assert data.get("f_name") == "XYZ", "Fetched data did not match"
+    assert data.get("f_name") == "Harsh", "Fetched data did not match"
 
 
 def test_db_update_data():

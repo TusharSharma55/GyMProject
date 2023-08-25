@@ -1,4 +1,3 @@
-import pytest
 import uuid
 
 from schemas.schema import FastAPIAuth as fauth
