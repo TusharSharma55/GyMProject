@@ -1,0 +1,104 @@
+2023-08-25 12:45:03,438 ** Request method=GET path=200 status_code=http://127.0.0.1:8000/docs process_time=0.00033 ** INFO ** 27
+2023-08-25 12:45:03,439 ** Request to http://127.0.0.1:8000/docs responded with status code 200 ** INFO ** 47
+2023-08-25 12:45:03,575 ** Request method=GET path=200 status_code=http://127.0.0.1:8000/openapi.json process_time=0.01001 ** INFO ** 27
+2023-08-25 12:45:03,575 ** Request to http://127.0.0.1:8000/openapi.json responded with status code 200 ** INFO ** 47
+2023-08-25 12:45:21,942 ** Authenticating user: nick@mail.com ** INFO ** 39
+2023-08-25 12:45:23,115 ** User nick@mail.com authenticated successfully ** INFO ** 43
+2023-08-25 12:45:23,115 ** User nick@mail.com logged in ** INFO ** 46
+2023-08-25 12:45:23,117 ** Request method=POST path=200 status_code=http://127.0.0.1:8000/login process_time=1.17830 ** INFO ** 27
+2023-08-25 12:45:23,117 ** Request to http://127.0.0.1:8000/login responded with status code 200 ** INFO ** 47
+2023-08-25 12:45:31,979 ** Request method=GET path=401 status_code=http://127.0.0.1:8000/gym/logs process_time=0.00033 ** INFO ** 27
+2023-08-25 12:45:31,986 ** Request to http://127.0.0.1:8000/gym/logs responded with status code 401 ** WARNING ** 50
+2023-08-25 12:45:45,493 ** Authenticating user: johndoe@mail.com ** INFO ** 39
+2023-08-25 12:45:45,817 ** User johndoe@mail.com authenticated successfully ** INFO ** 43
+2023-08-25 12:45:45,817 ** User johndoe@mail.com logged in ** INFO ** 46
+2023-08-25 12:45:45,818 ** Request method=POST path=200 status_code=http://127.0.0.1:8000/login process_time=0.32737 ** INFO ** 27
+2023-08-25 12:45:45,818 ** Request to http://127.0.0.1:8000/login responded with status code 200 ** INFO ** 47
+2023-08-25 12:45:55,669 ** User johndoe@mail.com authenticated through JWT token ** INFO ** 97
+2023-08-25 12:45:55,669 ** User johndoe@mail.com is an active user ** INFO ** 108
+2023-08-25 12:45:55,731 ** Records retrieved from collection 'gym' ** INFO ** 70
+2023-08-25 12:45:55,731 ** Error parsing record: 3 validation errors for ExerciseLogs
+exercises.0.SetRepLog.exercise
+  Input should be 'pushup','pullover','frontraise','shouldertaps','battleropes' or 'benchdip' [type=enum, input_value='string', input_type=str]
+exercises.0.RunningLog.exercise
+  Input should be 'outdoor_running','treadmill','elliptical' or 'elevated_treadmill' [type=enum, input_value='string', input_type=str]
+exercises.0.WeightLog.exercise
+  Input should be 'deadlift' or 'bench_press' [type=enum, input_value='string', input_type=str] ** ERROR ** 45
+2023-08-25 12:45:55,732 ** Retrieved 7 records for user: johndoe@mail.com ** INFO ** 47
+2023-08-25 12:45:55,732 ** Request method=GET path=200 status_code=http://127.0.0.1:8000/gym/logs process_time=0.15297 ** INFO ** 27
+2023-08-25 12:45:55,733 ** Request to http://127.0.0.1:8000/gym/logs responded with status code 200 ** INFO ** 47
+2023-08-25 12:46:21,386 ** Signup attempt for email: test2@mail.com ** INFO ** 26
+2023-08-25 12:46:21,422 ** An error occurred ** ERROR ** 54
+Traceback (most recent call last):
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/anyio/streams/memory.py", line 98, in receive
+    return self.receive_nowait()
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/anyio/streams/memory.py", line 93, in receive_nowait
+    raise WouldBlock
+anyio.WouldBlock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/middleware/base.py", line 78, in call_next
+    message = await recv_stream.receive()
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/anyio/streams/memory.py", line 118, in receive
+    raise EndOfStream
+anyio.EndOfStream
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/tushar/Work/FastAPI/Gym Project/middleware/middleware.py", line 45, in dispatch
+    response = await call_next(request)
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/middleware/base.py", line 108, in __call__
+    response = await self.dispatch_func(request, call_next)
+  File "/home/tushar/Work/FastAPI/Gym Project/middleware/middleware.py", line 24, in dispatch
+    response = await call_next(request)
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/middleware/base.py", line 84, in call_next
+    raise app_exc
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/middleware/base.py", line 70, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+    raise exc
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+    await self.app(scope, receive, sender)
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 20, in __call__
+    raise e
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/fastapi/middleware/asyncexitstack.py", line 17, in __call__
+    await self.app(scope, receive, send)
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/routing.py", line 718, in __call__
+    await route.handle(scope, receive, send)
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/routing.py", line 276, in handle
+    await self.app(scope, receive, send)
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/routing.py", line 66, in app
+    response = await func(request)
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/fastapi/routing.py", line 273, in app
+    raw_response = await run_endpoint_function(
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/fastapi/routing.py", line 192, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func, *args)
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/anyio/to_thread.py", line 33, in run_sync
+    return await get_asynclib().run_sync_in_worker_thread(
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 877, in run_sync_in_worker_thread
+    return await future
+  File "/home/tushar/Work/FastAPI/Gym Project/env/lib/python3.10/site-packages/anyio/_backends/_asyncio.py", line 807, in run
+    result = context.run(func, *args)
+  File "/home/tushar/Work/FastAPI/Gym Project/routes/auth.py", line 32, in sign_up
+    user.password = mg().get_password_hash(user.password)
+AttributeError: 'FastAPIAuth' object has no attribute 'get_password_hash'
+2023-08-25 12:48:00,259 ** Signup attempt for email: test2@mail.com ** INFO ** 26
+2023-08-25 12:48:02,852 ** User registered successfully: test2@mail.com ** INFO ** 35
+2023-08-25 12:48:02,853 ** Request method=POST path=200 status_code=http://127.0.0.1:8000/signup process_time=2.59915 ** INFO ** 27
+2023-08-25 12:48:02,853 ** Request to http://127.0.0.1:8000/signup responded with status code 200 ** INFO ** 47
+2023-08-25 12:48:04,325 ** Signup attempt for email: test2@mail.com ** INFO ** 26
+2023-08-25 12:48:04,420 ** Email already registered: test2@mail.com ** WARNING ** 29
+2023-08-25 12:48:04,421 ** Request method=POST path=400 status_code=http://127.0.0.1:8000/signup process_time=0.09602 ** INFO ** 27
+2023-08-25 12:48:04,421 ** Request to http://127.0.0.1:8000/signup responded with status code 400 ** WARNING ** 50
+2023-08-25 12:48:25,501 ** User test2@mail.com logged in ** INFO ** 46
+2023-08-25 12:48:25,503 ** Request method=POST path=200 status_code=http://127.0.0.1:8000/login process_time=0.30980 ** INFO ** 27
+2023-08-25 12:48:25,503 ** Request to http://127.0.0.1:8000/login responded with status code 200 ** INFO ** 47
